@@ -2,11 +2,38 @@
 @import 'reset';
 @import 'typography';
 
+// colors: 
+$bg: #fafafa;
+$lightblue: #E5F1FE;
+$red: #E84768;
+$darkBlue: #68B1FA;
+
+
+@mixin buttonMix {
+    width: 180px;
+    padding: 10px; 
+    color: $bg;
+    font-weight: 900;
+    background-color: $red;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    outline: none;
+    border: 1.5px solid black; 
+}
+
 body {
-    background: #fafafa;
+    background: $bg;
+    // change to black background on game over. 
+    // background: black;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    
+}
+
+#guess-form {
+    visibility: hidden;
 }
 
 .main {
@@ -20,16 +47,73 @@ body {
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         color: slategray;
 
-        .title {
-            font-size: 96px;
-        }
     }
 }
 
 .content {
     display: flex;
     flex-direction: column;
-    margin-top: 24px;
+    margin: 0 auto;
+    margin-top: 124px;
+    text-align: center;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: $lightblue;
+    border-radius: 10px;
+    height: 640px;
+    // border: 2px solid $darkBlue;
+    box-shadow: 3px 3px 15px -4px rgba(0,0,0,0.51);
+
+
+    #title {
+    
+        font-size: 96px;
+        color: $red;
+        // background-color: white;
+        padding: 15px 20px; 
+        // border-radius: 10px;
+        // border: 4px solid $darkBlue; 
+        
+    }
+
+
+
+    // to add on game over. 
+    // animation: game-over 1s linear;
+    // animation-fill-mode: forwards;
+
+    // Add this as well. 
+    // display: none;
+    
+}
+
+#game-over-heading {
+    font-weight: 900;
+    font-size: 110px;
+}
+
+// TO CHANGE ON GAME OVER
+
+
+
+.game-over-appear {    
+
+    display: flex;
+
+
+    // change this to opacity 1 on game over:
+    opacity: 0;
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    // margin: 0 auto;
+    // margin-top: 124px;
+    height: 100vh;
+    width: 100vw;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .box {
@@ -49,11 +133,201 @@ body {
     }
 }
 
-@media screen and (min-width: 900px) {
+// @media screen and (min-width: 900px) {
     
-    .content {
-        flex-direction: row;
-        justify-content: space-between;
-        min-height: 500px;
+//     .content {
+//         flex-direction: row;
+//         justify-content: space-between;
+//         min-height: 500px;
+//     }
+// }
+
+.title {
+    font-weight: 800;
+    font-size: 50px;
+    margin: 10px; 
+}
+
+.newGameBtn {
+    @include buttonMix();
+    width: 230px; 
+    height: 90px; 
+    margin-top: 80px;
+    
+    
+}
+
+.word-blanks {
+    font-size: 50px;
+    height: 90px;
+    margin-bottom: 15px; 
+    color: $red;
+    margin-top: 30px;
+}
+
+#guess-form {
+    margin: 20px; 
+}
+
+.guess-input {
+    height: 30px; 
+    padding: 5px; 
+    border: none; 
+    background-color: transparent;
+    border-bottom: 2px solid $red;
+    width: 50px;
+    text-align: center;
+    font-size: 28px;
+    color: $red;
+    
+}
+
+.guess-input:focus,
+.guess-input:active {
+    outline: none; 
+}
+
+.submit-button {
+    @include buttonMix();
+}
+
+.wrong-letter {
+    height: 200px;
+    visibility: hidden;
+    display: flex; 
+    flex-direction: column;
+
+
+    color: $darkBlue;
+
+    
+
+    h4{
+    margin: 20px; 
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 2.3px;
+    
+    p {
+        font-size: 25px !important;
+        margin: 20px !important; 
+    }
+
+}
+}
+
+#tries {
+    font-size: 20px;
+    visibility: hidden;
+    color: $darkBlue;
+    margin-bottom: 20px;
+    font-weight: 800;
+    letter-spacing: 2.3px;
+    text-transform: uppercase;
+
+}
+
+.topic-input {
+
+    height: 30px; 
+    padding: 5px; 
+    border: none; 
+    background-color: transparent;
+    border-bottom: 2px solid $red;
+    width: 140px;
+    text-align: center;
+    font-size: 20px;
+    color: $red;
+
+}
+
+.topic-input:focus {
+    outline:none;
+}
+
+.game-over {
+    color: black;
+}
+
+#playAgainBtn {
+    @include buttonMix();
+}
+
+@keyframes game-over {
+    from {
+        opacity: 1; 
+        // position: static;
+
+    }
+    to {
+        opacity: 0;
+        // position: absolute;
     }
 }
+
+@keyframes black-bg {
+    from {
+        background-color:#fafafa;
+        
+
+    }
+    to {
+        background-color: black;
+        
+    }
+}
+
+@keyframes blue-bg {
+    from {
+        background-color:#fafafa;
+        
+
+    }
+    to {
+        background-color: #E5F1FE;
+        
+    }
+}
+
+@keyframes game-over-appear {
+    from {
+        opacity: 0;
+        
+    }
+
+    to {
+        opacity: 1;
+        
+    }
+}
+ 
+
+@keyframes shake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+    
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+  
+    30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+  
+    40%, 60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
+
+
+// on game over: 
+// change body to black bacground 
+// add transitions to content class. 
+// add dead hangman 
+
+
+// .add-to-content {
+//     animation: "game-over 1s linear";
+//     animation-fill-mode: forwards;
+// }
