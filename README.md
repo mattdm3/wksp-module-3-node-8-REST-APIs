@@ -18,6 +18,73 @@ Provide him with a series of REST endpoints that meet all, or most of the RESTfu
 
 _This activity is more about the discussion in how to best organize data endpoints. There will not be any coding, unless you really want to provide Greg with working endpoints that he can test in Insomnia._
 
+ANSWER: 
+
+stock
+customers
+seating 
+
+/rewardsClients/    // this would contain an array of objects 
+     
+     {
+         fName:
+         lName:
+         email:
+         id: 
+         dateJoined: 
+         transactions:  
+         wifiTime: 
+     }
+
+/allTransactions // return a an an array of objects 
+
+use stripe. 
+
+{
+    id: 
+    transactionDate: timestamp
+    ammount: 
+    isRewards: true/false
+    itemsPurchased: 
+    forHere: false;
+        {
+            coffee: 1,
+            muffin: 2
+        }
+}
+
+/allTransactions/:year/:month/:day/:hour 
+/allTransactions/:year/:month/:day/
+/allTransactions/:year/:month
+/allTransactions/:year
+
+/allTransactions/${customInput}
+
+/allTransactions/:month
+
+/allTransactions/:hour
+
+/allTransactions/:timestamp
+
+/stockProduct // [{
+
+    id: 
+    item: muffins
+    flavor: 
+    quantity: 
+    price:  
+    stockRefill: false; //when quantity gets to 3, change to true. 
+
+}, 
+]
+
+
+/seating/:day
+
+
+
+
+
 ---
 
 ## Exercise 2 (Optional)

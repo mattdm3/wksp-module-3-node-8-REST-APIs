@@ -1,14 +1,58 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <link rel="stylesheet" href="../css/styles.css" />
     <style>
     </style>
 </head>
-<body>
+
+<body class="add-to-body">
+
+
     <div class="content">
-        time to get to hanging.... I mean guessing...
+        <h1 class="title" id="title">HANGMAN</h1>
+        <h4 id="tries">Tries remaining: 15</h4>
+
+        <!-- NEW GAME BUTTON -->
+        <input placeholder="choose a topic" class="topic-input" type="topic-input" id="topic" name="topicInput"
+            type="text" size="20" maxlength="20">
+        <input class="newGameBtn" id="newGame" name="refresh" type="button" value="New Game" onClick="newGame()">
+
+
+        <!-- TEMP show word ID on load -->
+
+        <p class="word-blanks" id="word-blanks">
+
+            <!-- Place underscores/letters here -->
+        </p>
+
+        <!-- GUESS FORM -->
+        <form id="guess-form" name="guessForm" onsubmit="handleGuess(event)">
+            <input class="guess-input" id="letterGuess" name="letterGuess" type="text" size="5" maxlength="1"
+                onfocus="this.value=''">
+            <button class="submit-button" type="submit">Guess a Letter</button>
+        </form>
+
+        <div class="wrong-letter">
+            <h4>WRONG LETTERS:</h4>
+            <p id="wrong-letter"></p>
+        </div>
+
+
+
     </div>
+
+    <div class="game-over-appear">
+        <div class="game-over">
+            <h2 id="game-over-heading">Game Over</h2>
+            <button id="playAgainBtn" value="refresh" onClick="history.go(0)">Play Again</button>
+        </div>
+        <img id="hangman-image" src="../img/hangman.png" alt="">
+    </div>
+
+
+
     <script src="scripts.js"></script>
 </body>
 
